@@ -18,8 +18,8 @@ for most changes; prefs changes need the Extensions app closed and reopened.
 
 ## Tests
 
-The gesture arithmetic in `src/pinchTracker.js` has no GNOME dependency and is
-tested with node:
+The gesture arithmetic in `src/pinchTracker.js` and `src/swipeClaimer.js` has no
+GNOME dependency and is tested with node:
 
 ```sh
 node --test

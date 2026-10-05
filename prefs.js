@@ -125,13 +125,12 @@ export default class TrackpadPreferences extends ExtensionPreferences {
             'Swipe left from the right edge with two fingers: needs the Trackpad helper, coming later');
         this._builtInRow(group, 'Mission Control', 'Swipe up with three or four fingers');
 
-        const appExpose = this._switchRow(group, {
+        this._switchRow(group, {
             title: 'App Exposé',
-            subtitle: 'Swipe down with three fingers. In development, not active yet',
+            subtitle: 'Swipe down with three fingers to see the windows of the current app',
             settings,
             key: 'app-expose-enabled',
         });
-        appExpose.sensitive = false;
 
         this._switchRow(group, {
             title: 'Launchpad',

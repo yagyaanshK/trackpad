@@ -4,11 +4,13 @@
 
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
+import {AppExpose} from './appExpose.js';
 import {Launchpad} from './launchpad.js';
 import {OverviewGuard} from './overviewGuard.js';
 import {PinchGesture} from './pinchGesture.js';
 import {DEAD_ZONE, clamp} from './pinchTracker.js';
 import {ShowDesktop} from './showDesktop.js';
+import {SwipeGesture} from './swipeGesture.js';
 
 const Target = {
     UNDECIDED: 0,
@@ -24,7 +26,15 @@ export class Trackpad {
         this._overviewGuard = new OverviewGuard();
         this._launchpad = new Launchpad();
         this._showDesktop = new ShowDesktop();
+        this._appExpose = new AppExpose();
         this._target = Target.UNDECIDED;
+
+        this._swipe = new SwipeGesture({
+            onBegin: () => this._settings.get_boolean('app-expose-enabled') &&
+                !this._showDesktop.shown && this._appExpose.canBegin() && (this._appExpose.begin(), true),
+            onUpdate: progress => this._appExpose.update(progress),
+            onEnd: (progress, velocity, cancelled) => this._appExpose.end(velocity, cancelled),
+        });
 
         this._gesture = new PinchGesture({
             onBegin: fingers => this._onBegin(fingers),
@@ -114,6 +124,10 @@ export class Trackpad {
     }
 
     destroy() {
+        this._swipe.destroy();
+        this._swipe = null;
+        this._appExpose.destroy();
+        this._appExpose = null;
         this._gesture.destroy();
         this._gesture = null;
         this._showDesktop.destroy();
