@@ -5,6 +5,7 @@
 import * as Main from 'resource:///org/gnome/shell/ui/main.js';
 
 import {Launchpad} from './launchpad.js';
+import {OverviewGuard} from './overviewGuard.js';
 import {PinchGesture} from './pinchGesture.js';
 import {DEAD_ZONE, clamp} from './pinchTracker.js';
 import {ShowDesktop} from './showDesktop.js';
@@ -20,6 +21,7 @@ const Target = {
 export class Trackpad {
     constructor(settings) {
         this._settings = settings;
+        this._overviewGuard = new OverviewGuard();
         this._launchpad = new Launchpad();
         this._showDesktop = new ShowDesktop();
         this._target = Target.UNDECIDED;
@@ -117,5 +119,7 @@ export class Trackpad {
         this._showDesktop.destroy();
         this._showDesktop = null;
         this._launchpad = null;
+        this._overviewGuard.destroy();
+        this._overviewGuard = null;
     }
 }

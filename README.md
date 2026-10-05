@@ -50,6 +50,12 @@ window actors with translations and settles them with the same easing and veloci
 rules as GNOME's swipe tracker. The arithmetic lives in `src/pinchTracker.js` and
 has node tests.
 
+## GNOME quirks handled
+
+- GNOME 50 logs "Invalid overview shown transition from HIDDEN to HIDING" whenever a
+  three-finger swipe starts on the desktop but never moves the overview (swiping down,
+  for example) and leaves its gesture flag set. Trackpad guards that path while enabled.
+
 ## License
 
 GPL-3.0-or-later. Contributions are accepted under the [CLA](CLA.md), which lets
