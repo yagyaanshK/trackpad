@@ -1,0 +1,9 @@
+{
+  "uuid": "trackpad@yagyaanshK.github.com",
+  "name": "Trackpad",
+  "description": "Mac-style trackpad gestures for GNOME: pinch with thumb and three fingers for Launchpad (the app grid), spread to show the desktop, App Exposé, and a settings panel laid out like Apple's Trackpad preferences. Reuses GNOME's own Mission Control and workspace swipes.",
+  "shell-version": ["50"],
+  "url": "https://github.com/yagyaanshK/trackpad",
+  "settings-schema": "org.gnome.shell.extensions.trackpad",
+  "version-name": "0.1.0"
+}

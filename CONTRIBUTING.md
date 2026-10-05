@@ -22,7 +22,7 @@ The gesture arithmetic in `src/pinchTracker.js` has no GNOME dependency and is
 tested with node:
 
 ```sh
-node --test tests/
+node --test
 ```
 
 Everything that touches the shell is checked in a headless shell

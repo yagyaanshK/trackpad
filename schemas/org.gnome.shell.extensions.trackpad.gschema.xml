@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="trackpad">
+  <enum id="org.gnome.shell.extensions.trackpad.pinch-fingers">
+    <value nick="any" value="0"/>
+    <value nick="four" value="1"/>
+    <value nick="three" value="2"/>
+  </enum>
+
+  <schema id="org.gnome.shell.extensions.trackpad" path="/org/gnome/shell/extensions/trackpad/">
+    <key name="launchpad-enabled" type="b">
+      <default>true</default>
+      <summary>Launchpad</summary>
+      <description>Pinch with thumb and three fingers to open the app grid. Spread to close it again.</description>
+    </key>
+    <key name="show-desktop-enabled" type="b">
+      <default>true</default>
+      <summary>Show Desktop</summary>
+      <description>Spread with thumb and three fingers to slide every window to the edge of the screen. Pinch to bring them back.</description>
+    </key>
+    <key name="app-expose-enabled" type="b">
+      <default>false</default>
+      <summary>App Exposé</summary>
+      <description>Swipe down with three fingers to see the windows of the current app. Off by default, as on macOS.</description>
+    </key>
+    <key name="pinch-fingers" enum="org.gnome.shell.extensions.trackpad.pinch-fingers">
+      <default>'any'</default>
+      <summary>Fingers for pinch gestures</summary>
+      <description>Thumb and three fingers usually register as four contacts, sometimes three. "any" accepts both.</description>
+    </key>
+  </schema>
+</schemalist>
